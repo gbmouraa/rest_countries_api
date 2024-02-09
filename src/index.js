@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import GlobalStyle from "../src/styles/global";
 import App from "./App";
+import { RestCountriesProvider } from "./context/restCountries";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
-    <GlobalStyle />
+    <RestCountriesProvider>
+      <App />
+    </RestCountriesProvider>
   </React.StrictMode>
 );
