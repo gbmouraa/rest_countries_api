@@ -17,6 +17,8 @@ export default createGlobalStyle`
     width: 100%;
     min-height: 100vh;
     font-size: 1.6rem;
+    background-color: ${({ theme }) => theme.body_bg};
+    color: ${({ theme }) => theme.text};
   }
 
   body,input,button{
