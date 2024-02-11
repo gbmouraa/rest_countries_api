@@ -3,6 +3,7 @@ export const darkTheme = {
   body_bg: "#202c37",
   text: "#ffffff",
   element_shadow: "#151d24",
+  icon_search: "#ffffff",
 };
 
 export const lightTheme = {
@@ -11,4 +12,5 @@ export const lightTheme = {
   text: "#111517",
   input: "#858585",
   element_shadow: "#dedede",
+  icon_search: "#ccc",
 };
