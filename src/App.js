@@ -3,13 +3,16 @@ import { RestCountriesContext } from "./context/restCountries";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./styles/theme";
 import GlobalStyle from "../src/styles/global";
+import Header from "./components/Header";
 
 function App() {
   const { theme } = useContext(RestCountriesContext);
 
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-      <div className="App">Olá mundo!</div>
+      <div className="App">
+        <Header />
+      </div>
       <GlobalStyle />
     </ThemeProvider>
   );
