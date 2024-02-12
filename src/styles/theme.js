@@ -4,6 +4,7 @@ export const darkTheme = {
   text: "#ffffff",
   element_shadow: "#151d24",
   icon_search: "#ffffff",
+  hover_menu: "#232d36",
 };
 
 export const lightTheme = {
@@ -13,4 +14,5 @@ export const lightTheme = {
   input: "#858585",
   element_shadow: "#dedede",
   icon_search: "#ccc",
+  hover_menu: "#e1e2e3",
 };
