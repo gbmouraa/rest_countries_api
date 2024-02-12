@@ -3,8 +3,8 @@ import {
   InputGroupWrapper,
   InputSearch,
   FiltersSection,
-  SearchBar,
   DropDownMenu,
+  SearchBar,
   Label,
   FiltersList,
   Filter,
@@ -15,6 +15,10 @@ function InputGroup() {
   const searchRef = useRef(null);
   const [menuActive, setMenuActive] = useState("");
   const [regionFilter, setRegionFilter] = useState("");
+  const [sortFilter, setSortFilter] = useState("");
+
+  const regionsList = ["All", "Africa", "America", "Asia", "Europe", "Oceania"];
+  const sortList = ["Population", "Name"];
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -46,6 +50,7 @@ function InputGroup() {
         <DropDownMenu
           id="region"
           active={menuActive === "region"}
+          height="27.6rem"
           onClick={(e) => handleDropDownMenu(e.currentTarget.id)}
         >
           <Label>
@@ -55,24 +60,36 @@ function InputGroup() {
             <IoIosArrowDown />
           </Label>
           <FiltersList>
-            <Filter onClick={(e) => setRegionFilter(e.currentTarget.innerText)}>
-              All
-            </Filter>
-            <Filter onClick={(e) => setRegionFilter(e.currentTarget.innerText)}>
-              Africa
-            </Filter>
-            <Filter onClick={(e) => setRegionFilter(e.currentTarget.innerText)}>
-              America
-            </Filter>
-            <Filter onClick={(e) => setRegionFilter(e.currentTarget.innerText)}>
-              Asia
-            </Filter>
-            <Filter onClick={(e) => setRegionFilter(e.currentTarget.innerText)}>
-              Europe
-            </Filter>
-            <Filter onClick={(e) => setRegionFilter(e.currentTarget.innerText)}>
-              Oceania
-            </Filter>
+            {regionsList.map((item, idx) => (
+              <Filter
+                key={idx}
+                onClick={(e) => setRegionFilter(e.currentTarget.innerText)}
+              >
+                {item}
+              </Filter>
+            ))}
+          </FiltersList>
+        </DropDownMenu>
+
+        <DropDownMenu
+          id="sort"
+          active={menuActive === "sort"}
+          height="9.2rem"
+          onClick={(e) => handleDropDownMenu(e.currentTarget.id)}
+        >
+          <Label style={{ width: "11.6rem" }}>
+            {sortFilter === "" ? "Sort" : sortFilter}
+            <IoIosArrowDown />
+          </Label>
+          <FiltersList>
+            {sortList.map((item, idx) => (
+              <Filter
+                key={idx}
+                onClick={(e) => setSortFilter(e.currentTarget.innerText)}
+              >
+                {item}
+              </Filter>
+            ))}
           </FiltersList>
         </DropDownMenu>
       </FiltersSection>

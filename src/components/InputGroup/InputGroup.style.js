@@ -50,11 +50,16 @@ export const InputSearch = styled.input`
   }
 `;
 
-export const FiltersSection = styled.div``;
+export const FiltersSection = styled.div`
+  display: flex;
+  column-gap: 1.2rem;
+`;
 
 export const DropDownMenu = styled.div`
+  position: relative;
+
   ul {
-    height: ${({ active }) => (active ? "27.6rem" : "0rem")};
+    height: ${({ active, height }) => (active ? height : "0rem")};
   }
 
   p {
@@ -90,6 +95,8 @@ export const FiltersList = styled.ul`
   overflow: hidden;
   height: 0rem;
   transition: all 0.3s ease;
+  position: absolute;
+  width: 100%;
 `;
 
 export const Filter = styled.li`
