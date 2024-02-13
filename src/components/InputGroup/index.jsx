@@ -77,7 +77,7 @@ function InputGroup() {
           height="9.2rem"
           onClick={(e) => handleDropDownMenu(e.currentTarget.id)}
         >
-          <Label style={{ width: "11.6rem" }}>
+          <Label style={{ width: "14.6rem" }}>
             {sortFilter === "" ? "Sort" : sortFilter}
             <IoIosArrowDown />
           </Label>
