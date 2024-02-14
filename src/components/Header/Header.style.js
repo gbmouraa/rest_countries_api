@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { Title } from "../Title.style";
 
 export const HeaderContainer = styled.header`
   background-color: ${({ theme }) => theme.element_bg};
@@ -12,8 +13,14 @@ export const HeaderContainer = styled.header`
 export const HeaderWrapper = styled.div`
   display: flex;
   width: 100%;
-  max-width: 104rem;
+  max-width: 140rem;
   justify-content: space-between;
+
+  @media screen and (min-width: 76.8rem) {
+    .header-title {
+      font-size: 2.4rem;
+    }
+  }
 `;
 
 export const ThemeSwitcher = styled.button`

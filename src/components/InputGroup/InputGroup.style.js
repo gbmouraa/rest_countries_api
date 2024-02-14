@@ -5,7 +5,7 @@ export const InputGroupWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 104rem;
+  max-width: 140rem;
   flex-wrap: wrap;
   row-gap: 3.4rem;
   margin-top: 2.8rem;
@@ -16,7 +16,7 @@ export const InputGroupWrapper = styled.div`
     max-width: 48rem;
   }
 
-  @media screen and (min-width: 76.8rem) {
+  @media screen and (min-width: 1070px) {
     padding: 0;
   }
 `;
