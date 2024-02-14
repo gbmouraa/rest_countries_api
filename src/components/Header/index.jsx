@@ -19,7 +19,9 @@ export default function Header() {
   return (
     <HeaderContainer>
       <HeaderWrapper>
-        <Title size="2">Where in the world?</Title>
+        <Title size="2" className="header-title">
+          Where in the world?
+        </Title>
         <ThemeSwitcher onClick={toggleTheme}>
           {theme === "light" ? (
             <>
