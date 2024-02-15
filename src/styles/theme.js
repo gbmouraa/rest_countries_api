@@ -11,7 +11,6 @@ export const lightTheme = {
   element_bg: "#ffffff",
   body_bg: "#fafafa",
   text: "#111517",
-  input: "#858585",
   element_shadow: "#dedede",
   icon_search: "#ccc",
   hover_menu: "#e1e2e3",
