@@ -60,6 +60,7 @@ export const DropDownMenu = styled.div`
 
   ul {
     height: ${({ active, height }) => (active ? height : "0rem")};
+    z-index: 999;
   }
 
   p {
