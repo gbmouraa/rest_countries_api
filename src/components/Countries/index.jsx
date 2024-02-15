@@ -8,6 +8,7 @@ import {
   CountryDescription,
   Description,
 } from "./Countries.style";
+import { Loader } from "../Loader.style";
 
 import { Title } from "../Title.style";
 
@@ -29,6 +30,10 @@ function Countries() {
     loadCountries();
   }, []);
 
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <CountriesContainer>
       <CountriesWrapper>
@@ -42,7 +47,8 @@ function Countries() {
                 {item.name.common}
               </Title>
               <Description>
-                Population: <span>{item.population}</span>
+                Population:{" "}
+                <span>{item.population.toLocaleString("pt-BR")}</span>
               </Description>
               <Description>
                 Region: <span>{item.region}</span>
