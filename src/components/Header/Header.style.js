@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-import { Title } from "../Title.style";
 
 export const HeaderContainer = styled.header`
   background-color: ${({ theme }) => theme.element_bg};
