@@ -11,7 +11,7 @@ export const InputGroupWrapper = styled.div`
   margin-top: 2.8rem;
   padding: 0 2rem;
 
-  form {
+  div {
     width: 100%;
     max-width: 48rem;
   }
