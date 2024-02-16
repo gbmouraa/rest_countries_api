@@ -32,7 +32,10 @@ function Countries() {
     <CountriesContainer>
       <CountriesWrapper>
         {countries.map((item, idx) => (
-          <Country key={idx}>
+          <Country
+            key={idx}
+            to={`country/${encodeURIComponent(item.name.common)}`}
+          >
             <CountryFlag>
               <img src={item.flags.svg} alt={item.flags.alt} />
             </CountryFlag>
