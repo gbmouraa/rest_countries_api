@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { api } from "../../services/api";
+import { useContext } from "react";
+import { RestCountriesContext } from "../../context/restCountries";
 import {
   CountriesContainer,
   CountriesWrapper,
@@ -7,31 +7,25 @@ import {
   CountryFlag,
   CountryDescription,
   Description,
+  ErrorMsg,
 } from "./Countries.style";
 import { Loader } from "../Loader.style";
 
 import { Title } from "../Title.style";
 
 function Countries() {
-  const [countries, setCountries] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function loadCountries() {
-      try {
-        const fetchData = await api.get("/all");
-        setCountries(fetchData.data);
-        setLoading(false);
-      } catch (error) {
-        console.log(error);
-        setLoading(false);
-      }
-    }
-    loadCountries();
-  }, []);
+  const { countries, loading, error } = useContext(RestCountriesContext);
 
   if (loading) {
     return <Loader />;
+  }
+
+  if (error) {
+    return (
+      <ErrorMsg>
+        Sorry, no country found. <span>&#128546;</span>
+      </ErrorMsg>
+    );
   }
 
   return (
