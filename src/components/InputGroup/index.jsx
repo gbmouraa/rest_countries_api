@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { RestCountriesContext } from "../../context/restCountries";
 import {
   InputGroupWrapper,
   InputSearch,
@@ -12,7 +13,8 @@ import {
 import { IoMdSearch, IoIosArrowDown } from "react-icons/io";
 
 function InputGroup() {
-  const searchRef = useRef(null);
+  const { fetchCountries } = useContext(RestCountriesContext);
+
   const [menuActive, setMenuActive] = useState("");
   const [regionFilter, setRegionFilter] = useState("");
   const [sortFilter, setSortFilter] = useState("");
@@ -20,31 +22,35 @@ function InputGroup() {
   const regionsList = ["All", "Africa", "America", "Asia", "Europe", "Oceania"];
   const sortList = ["Population", "Name"];
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const query = searchRef.current.value;
-
-    if (query !== null && query !== "") {
-      console.log(query);
-    }
-  }
+  useEffect(() => {
+    fetchCountries("all");
+  }, []);
 
   function handleDropDownMenu(menuID) {
     setMenuActive((prevState) => (prevState === menuID ? "" : menuID));
   }
 
+  function handleSearch(query) {
+    if (query.trim() === "") {
+      fetchCountries("all");
+      return;
+    }
+
+    fetchCountries(`name/${query}`);
+  }
+
   return (
     <InputGroupWrapper>
-      <form onSubmit={handleSubmit}>
+      <div>
         <SearchBar htmlFor="search">
           <IoMdSearch size={24} />
           <InputSearch
-            ref={searchRef}
+            onChange={(e) => handleSearch(e.target.value)}
             id="search"
             placeholder="Search for a country..."
           />
         </SearchBar>
-      </form>
+      </div>
 
       <FiltersSection>
         <DropDownMenu
