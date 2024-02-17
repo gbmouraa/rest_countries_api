@@ -7,8 +7,8 @@ import {
   CountryFlag,
   CountryDescription,
   Description,
-  ErrorMsg,
 } from "./Countries.style";
+import { ErrorMsg } from "../ErrorMsg";
 import { Loader } from "../Loader.style";
 
 import { Title } from "../Title.style";
