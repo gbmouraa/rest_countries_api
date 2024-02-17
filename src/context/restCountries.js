@@ -15,8 +15,8 @@ export function RestCountriesProvider({ children }) {
   async function fetchCountries(query) {
     try {
       const fetchData = await api.get(`/${query}`);
-      const response = fetchData.data;
-      setCountries(response);
+      const data = fetchData.data;
+      setCountries(data);
       setLoading(false);
       setError(false);
     } catch (error) {
