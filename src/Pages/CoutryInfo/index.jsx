@@ -1,37 +1,32 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 import Header from "../../components/Header";
 import { ErrorMsg } from "../../components/ErrorMsg";
 import { Loader } from "../../components/Loader.style";
+import {
+  Container,
+  Button,
+  CoutryWrapper,
+  CoutryFlag,
+  CoutryInfos,
+  DescriptionsWrapper,
+  Description,
+  BorderCountries,
+} from "./CountryInfo.style";
+import { Title } from "../../components/Title.style";
+import { FaArrowLeftLong } from "react-icons/fa6";
 
-export default function CountryInfo() {
+export default function CoutryInfo() {
   const { coutryName } = useParams();
-  const [country, setCountry] = useState();
+  const navigate = useNavigate();
 
+  const [coutry, setCoutry] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  async function loadCountry(country, countryCodes = false) {
-    if (!countryCodes) {
-      formatCoutryData(country);
-      return;
-    }
-
-    try {
-      const data = await Promise.all(
-        countryCodes.map(async (item) => {
-          const response = await api.get(`alpha?codes=${item}`);
-          return response.data[0].name.common;
-        })
-      );
-      formatCoutryData(country, data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   async function fetchCountry() {
+    setLoading(true);
     try {
       const fetchData = await api.get(`name/${coutryName}`);
       const data = fetchData.data[0];
@@ -46,35 +41,59 @@ export default function CountryInfo() {
     }
   }
 
+  // countryCodes é os codigos dos países que fazem fronteira, ex Brasil = 'BRA'
+  async function loadCountry(coutry, countryCodes = false) {
+    if (!countryCodes) {
+      formatCoutryData(coutry);
+      return;
+    }
+
+    try {
+      const data = await Promise.all(
+        countryCodes.map(async (item) => {
+          const response = await api.get(`alpha?codes=${item}`);
+          return response.data[0].name.common;
+        })
+      );
+      formatCoutryData(coutry, data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     async function loadData() {
       await fetchCountry();
     }
     loadData();
-  }, []);
+  }, [coutryName]);
 
-  function formatCoutryData(country, borderCountries = false) {
+  function formatCoutryData(coutry, borderCountries = false) {
     const formatedCountry = {
-      flag: country.flags.svg,
-      alt: country.flags.alt,
-      name: country.name.common,
-      nativeName: Object.values(country.name.nativeName)[0].common,
-      population: country.population.toLocaleString(),
-      region: country.region,
-      subRegion: country.subregion,
-      capital: country.capital[0],
-      topLevelDomain: country.tld[0],
-      currencies: Object.keys(country.currencies).map(
-        (currency) => country.currencies[currency].name
+      flag: coutry.flags.svg,
+      alt: coutry.flags.alt,
+      name: coutry.name.common,
+      nativeName: Object.values(coutry.name.nativeName)[0].common,
+      population: coutry.population.toLocaleString(),
+      region: coutry.region,
+      subRegion: coutry.subregion,
+      capital: coutry.capital[0],
+      topLevelDomain: coutry.tld[0],
+      currencies: Object.keys(coutry.currencies).map(
+        (currency) => coutry.currencies[currency].name
       ),
-      languages: Object.keys(country.languages).map((lang) =>
-        Object.values(country.languages[lang]).join("")
+      languages: Object.keys(coutry.languages).map((lang) =>
+        Object.values(coutry.languages[lang]).join("")
       ),
       borders: borderCountries,
     };
 
-    setCountry(formatedCountry);
+    setCoutry(formatedCountry);
     setLoading(false);
+  }
+
+  function changeCountry(coutry) {
+    navigate(`/coutry/${coutry}`);
   }
 
   if (error) {
@@ -93,65 +112,67 @@ export default function CountryInfo() {
   return (
     <>
       <Header />
-      {/* container */}
-      <div>
-        <button></button>
-        {/* Country Wrapper */}
-        <div>
-          <figure>
-            <img
-              src={country.flag}
-              alt={coutryName.alt}
-              style={{ width: "200px" }}
-            />
-          </figure>
-          {/* coutry info */}
-          <div>
+      <Container>
+        <Button>
+          <FaArrowLeftLong /> Back
+        </Button>
+        <CoutryWrapper>
+          <CoutryFlag>
+            <img src={coutry.flag} alt={coutryName.alt} />
+          </CoutryFlag>
+          <CoutryInfos>
             {/* description */}
-            <div>
-              <h1>{country.name}</h1>
-              <p>
-                Native name: <span>{country.nativeName}</span>
-              </p>
-              <p>
-                Population: <span>{country.population}</span>
-              </p>
-              <p>
-                Region: <span>{country.region}</span>
-              </p>
-              <p>
-                Sub Region: <span>{country.subRegion}</span>
-              </p>
-              <p>
-                Capital: <span>{country.capital}</span>
-              </p>
-            </div>
+            <DescriptionsWrapper>
+              <Title size="2.4" className="coutry-name">
+                {coutry.name}
+              </Title>
+              <Description>
+                Native name: <span>{coutry.nativeName}</span>
+              </Description>
+              <Description>
+                Population: <span>{coutry.population}</span>
+              </Description>
+              <Description>
+                Region: <span>{coutry.region}</span>
+              </Description>
+              <Description>
+                Sub Region: <span>{coutry.subRegion}</span>
+              </Description>
+              <Description>
+                Capital: <span>{coutry.capital}</span>
+              </Description>
+            </DescriptionsWrapper>
             {/* description */}
-            <div>
-              <p>
-                Top Level Domain: <span>{country.topLevelDomain}</span>
-              </p>
-              <p>
-                Currencies: <span>{country.currencies.join(", ")}</span>
-              </p>
-              <p>
-                Languages: <span>{country.languages.join(", ")}</span>
-              </p>
-            </div>
+            <DescriptionsWrapper>
+              <Description>
+                Top Level Domain: <span>{coutry.topLevelDomain}</span>
+              </Description>
+              <Description>
+                Currencies: <span>{coutry.currencies.join(", ")}</span>
+              </Description>
+              <Description>
+                Languages: <span>{coutry.languages.join(", ")}</span>
+              </Description>
+            </DescriptionsWrapper>
             {/* border countries */}
-            {country.borders && (
-              <div>
+            {coutry.borders && (
+              <BorderCountries>
                 <p>Border Countries:</p>
                 <div>
-                  {country.borders.map((item) => (
-                    <span key={item}>{item}</span>
+                  {coutry.borders.map((item) => (
+                    <Button
+                      key={item}
+                      onClick={() => changeCountry(encodeURIComponent(item))}
+                    >
+                      {item}
+                    </Button>
                   ))}
                 </div>
-              </div>
+              </BorderCountries>
             )}
-          </div>
-        </div>
-      </div>
+          </CoutryInfos>
+        </CoutryWrapper>
+      </Container>
     </>
   );
 }
