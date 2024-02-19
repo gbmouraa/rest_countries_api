@@ -34,7 +34,7 @@ function Countries() {
         {countries.map((item, idx) => (
           <Country
             key={idx}
-            to={`country/${encodeURIComponent(item.name.common)}`}
+            to={`coutry/${encodeURIComponent(item.name.common)}`}
           >
             <CountryFlag>
               <img src={item.flags.svg} alt={item.flags.alt} />

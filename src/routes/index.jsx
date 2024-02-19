@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "../Pages/Home";
-import CountryInfo from "../Pages/CoutryInfo";
+import CoutryInfo from "../Pages/CoutryInfo";
 
 export default function AppRouter() {
   return (
@@ -9,7 +9,7 @@ export default function AppRouter() {
         <Route path="/" element={<Home />} />
       </Routes>
       <Routes>
-        <Route path="/country/:coutryName" element={<CountryInfo />} />
+        <Route path="/coutry/:coutryName" element={<CoutryInfo />} />
       </Routes>
     </div>
   );
