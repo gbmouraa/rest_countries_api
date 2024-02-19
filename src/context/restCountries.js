@@ -27,7 +27,14 @@ export function RestCountriesProvider({ children }) {
 
   return (
     <RestCountriesContext.Provider
-      value={{ theme, setTheme, countries, loading, fetchCountries, error }}
+      value={{
+        theme,
+        setTheme,
+        countries,
+        loading,
+        fetchCountries,
+        error,
+      }}
     >
       {children}
     </RestCountriesContext.Provider>
