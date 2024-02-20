@@ -8,7 +8,7 @@ export function RestCountriesProvider({ children }) {
     return localStorage.getItem("@restCountries") || "light";
   });
 
-  const [countries, setCountries] = useState([]);
+  const [allCountries, setAllCountries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -16,7 +16,7 @@ export function RestCountriesProvider({ children }) {
     try {
       const fetchData = await api.get(`/${query}`);
       const data = fetchData.data;
-      setCountries(data);
+      setAllCountries(data);
       setLoading(false);
       setError(false);
     } catch (error) {
@@ -25,15 +25,25 @@ export function RestCountriesProvider({ children }) {
     }
   }
 
+  async function filterByRegion(region) {
+    if (region === "All") {
+      await fetchCountries("all");
+      return;
+    }
+
+    await fetchCountries(`region/${region}`);
+  }
+
   return (
     <RestCountriesContext.Provider
       value={{
         theme,
         setTheme,
-        countries,
+        allCountries,
         loading,
         fetchCountries,
         error,
+        filterByRegion,
       }}
     >
       {children}
