@@ -92,10 +92,6 @@ export default function CoutryInfo() {
     setLoading(false);
   }
 
-  function changeCountry(coutry) {
-    navigate(`/coutry/${coutry}`);
-  }
-
   if (error) {
     return (
       <ErrorMsg>
@@ -113,7 +109,7 @@ export default function CoutryInfo() {
     <>
       <Header />
       <Container>
-        <Button>
+        <Button onClick={() => navigate("/")}>
           <FaArrowLeftLong /> Back
         </Button>
         <CoutryWrapper>
@@ -121,7 +117,6 @@ export default function CoutryInfo() {
             <img src={coutry.flag} alt={coutryName.alt} />
           </CoutryFlag>
           <CoutryInfos>
-            {/* description */}
             <DescriptionsWrapper>
               <Title size="2.4" className="coutry-name">
                 {coutry.name}
@@ -142,7 +137,6 @@ export default function CoutryInfo() {
                 Capital: <span>{coutry.capital}</span>
               </Description>
             </DescriptionsWrapper>
-            {/* description */}
             <DescriptionsWrapper>
               <Description>
                 Top Level Domain: <span>{coutry.topLevelDomain}</span>
@@ -154,15 +148,17 @@ export default function CoutryInfo() {
                 Languages: <span>{coutry.languages.join(", ")}</span>
               </Description>
             </DescriptionsWrapper>
-            {/* border countries */}
             {coutry.borders && (
-              <BorderCountries>
+              <BorderCountries className="border-countries">
                 <p>Border Countries:</p>
                 <div>
                   {coutry.borders.map((item) => (
                     <Button
                       key={item}
-                      onClick={() => changeCountry(encodeURIComponent(item))}
+                      className="border-labels"
+                      onClick={() =>
+                        navigate(`/coutry/${encodeURIComponent(item)}`)
+                      }
                     >
                       {item}
                     </Button>
