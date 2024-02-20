@@ -3,24 +3,22 @@ import { RestCountriesContext } from "../../context/restCountries";
 import {
   InputGroupWrapper,
   InputSearch,
-  FiltersSection,
   DropDownMenu,
   SearchBar,
   Label,
   FiltersList,
   Filter,
+  Container,
 } from "./InputGroup.style";
 import { IoMdSearch, IoIosArrowDown } from "react-icons/io";
 
 function InputGroup() {
-  const { fetchCountries } = useContext(RestCountriesContext);
+  const { fetchCountries, filterByRegion } = useContext(RestCountriesContext);
 
   const [menuActive, setMenuActive] = useState("");
   const [regionFilter, setRegionFilter] = useState("");
-  const [sortFilter, setSortFilter] = useState("");
 
   const regionsList = ["All", "Africa", "America", "Asia", "Europe", "Oceania"];
-  const sortList = ["Population", "Name"];
 
   useEffect(() => {
     fetchCountries("all");
@@ -39,20 +37,25 @@ function InputGroup() {
     fetchCountries(`name/${query}`);
   }
 
-  return (
-    <InputGroupWrapper>
-      <div>
-        <SearchBar htmlFor="search">
-          <IoMdSearch size={24} />
-          <InputSearch
-            onChange={(e) => handleSearch(e.target.value)}
-            id="search"
-            placeholder="Search for a country..."
-          />
-        </SearchBar>
-      </div>
+  function handleFilter(filter) {
+    setRegionFilter(filter);
+    filterByRegion(filter);
+  }
 
-      <FiltersSection>
+  return (
+    <Container>
+      <InputGroupWrapper>
+        <div className="search-area">
+          <SearchBar htmlFor="search">
+            <IoMdSearch size={24} />
+            <InputSearch
+              onChange={(e) => handleSearch(e.target.value)}
+              id="search"
+              placeholder="Search for a country..."
+            />
+          </SearchBar>
+        </div>
+
         <DropDownMenu
           id="region"
           active={menuActive === "region"}
@@ -69,37 +72,15 @@ function InputGroup() {
             {regionsList.map((item, idx) => (
               <Filter
                 key={idx}
-                onClick={(e) => setRegionFilter(e.currentTarget.innerText)}
+                onClick={(e) => handleFilter(e.currentTarget.innerText)}
               >
                 {item}
               </Filter>
             ))}
           </FiltersList>
         </DropDownMenu>
-
-        <DropDownMenu
-          id="sort"
-          active={menuActive === "sort"}
-          height="9.2rem"
-          onClick={(e) => handleDropDownMenu(e.currentTarget.id)}
-        >
-          <Label style={{ width: "14.6rem" }}>
-            {sortFilter === "" ? "Sort" : sortFilter}
-            <IoIosArrowDown />
-          </Label>
-          <FiltersList>
-            {sortList.map((item, idx) => (
-              <Filter
-                key={idx}
-                onClick={(e) => setSortFilter(e.currentTarget.innerText)}
-              >
-                {item}
-              </Filter>
-            ))}
-          </FiltersList>
-        </DropDownMenu>
-      </FiltersSection>
-    </InputGroupWrapper>
+      </InputGroupWrapper>
+    </Container>
   );
 }
 
