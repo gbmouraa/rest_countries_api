@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  padding: 0 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
 export const InputGroupWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -9,15 +16,10 @@ export const InputGroupWrapper = styled.div`
   flex-wrap: wrap;
   row-gap: 3.4rem;
   margin-top: 2.8rem;
-  padding: 0 2rem;
 
-  div {
+  .search-area {
     width: 100%;
     max-width: 48rem;
-  }
-
-  @media screen and (min-width: 1070px) {
-    padding: 0;
   }
 `;
 
@@ -50,17 +52,13 @@ export const InputSearch = styled.input`
   }
 `;
 
-export const FiltersSection = styled.div`
-  display: flex;
-  column-gap: 1.2rem;
-`;
-
 export const DropDownMenu = styled.div`
-  position: relative;
+  width: 20rem;
 
   ul {
     height: ${({ active, height }) => (active ? height : "0rem")};
     z-index: 999;
+    width: 20rem;
   }
 
   p {

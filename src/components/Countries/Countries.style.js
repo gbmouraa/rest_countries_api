@@ -7,10 +7,6 @@ export const CountriesContainer = styled.section`
   display: flex;
   justify-content: center;
   padding: 0 2rem;
-
-  @media screen and (min-width: 1070px) {
-    padding: 0;
-  }
 `;
 
 export const CountriesWrapper = styled.div`
@@ -25,7 +21,7 @@ export const CountriesWrapper = styled.div`
 export const Country = styled(Link)`
   display: block;
   width: 100%;
-  max-width: 30rem;
+  max-width: 50rem;
   transition: all 0.4s ease;
   border-radius: 0.5rem;
   overflow: hidden;
@@ -41,16 +37,25 @@ export const Country = styled(Link)`
   .country-name {
     margin-bottom: 1.6rem;
   }
+
+  @media screen and (min-width: 723px) {
+    max-width: 30rem;
+  }
 `;
 
 export const CountryFlag = styled.figure`
   width: 100%;
   img {
     width: 100%;
-    max-width: 30rem;
-    height: 16rem;
+    max-width: 50rem;
+    height: 26rem;
     object-fit: cover;
     display: block;
+
+    @media screen and (min-width: 723px) {
+      max-width: 30rem;
+      height: 16rem;
+    }
   }
 `;
 
