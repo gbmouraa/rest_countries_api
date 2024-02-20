@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "../Pages/Home";
-import CoutryInfo from "../Pages/CoutryInfo";
+import CoutryPage from "../Pages/CoutryPage";
 
 export default function AppRouter() {
   return (
@@ -9,7 +9,7 @@ export default function AppRouter() {
         <Route path="/" element={<Home />} />
       </Routes>
       <Routes>
-        <Route path="/coutry/:coutryName" element={<CoutryInfo />} />
+        <Route path="/coutry/:coutryName" element={<CoutryPage />} />
       </Routes>
     </div>
   );
