@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { RestCountriesContext } from "../../context/restCountries";
 import {
   CountriesContainer,
@@ -14,7 +14,7 @@ import { Loader } from "../Loader.style";
 import { Title } from "../Title.style";
 
 function Countries() {
-  const { countries, loading, error } = useContext(RestCountriesContext);
+  const { allCountries, loading, error } = useContext(RestCountriesContext);
 
   if (loading) {
     return <Loader />;
@@ -31,7 +31,7 @@ function Countries() {
   return (
     <CountriesContainer>
       <CountriesWrapper>
-        {countries.map((item, idx) => (
+        {allCountries.map((item, idx) => (
           <Country
             key={idx}
             to={`coutry/${encodeURIComponent(item.name.common)}`}
