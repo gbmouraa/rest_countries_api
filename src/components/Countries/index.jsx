@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { RestCountriesContext } from "../../context/restCountries";
 import {
   CountriesContainer,
