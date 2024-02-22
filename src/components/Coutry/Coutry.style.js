@@ -25,6 +25,11 @@ export const Button = styled.button`
   font-size: 1.6rem;
   border-radius: 0.4rem;
   box-shadow: 0px 2px 4px ${({ theme }) => theme.element_shadow};
+  transition: all 0.5s ease;
+
+  &:hover {
+    transform: scale(0.93);
+  }
 `;
 
 export const CoutryWrapper = styled.div`
@@ -112,7 +117,6 @@ export const BorderCountries = styled.div`
     font-size: 1.8rem;
     display: block;
     min-width: fit-content;
-    /* align-self: flex-start; */
   }
 
   div {
