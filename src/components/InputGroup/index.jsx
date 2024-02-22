@@ -47,6 +47,7 @@ function InputGroup() {
               onChange={(e) => handleSearch(e.target.value)}
               id="search"
               placeholder="Search for a country..."
+              autoComplete="off"
             />
           </SearchBar>
         </div>
