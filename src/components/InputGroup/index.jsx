@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { RestCountriesContext } from "../../context/restCountries";
 import {
   InputGroupWrapper,
@@ -17,12 +17,7 @@ function InputGroup() {
 
   const [menuActive, setMenuActive] = useState("");
   const [regionFilter, setRegionFilter] = useState("");
-
   const regionsList = ["All", "Africa", "America", "Asia", "Europe", "Oceania"];
-
-  useEffect(() => {
-    fetchCountries("all");
-  }, []);
 
   function handleDropDownMenu(menuID) {
     setMenuActive((prevState) => (prevState === menuID ? "" : menuID));
