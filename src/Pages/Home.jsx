@@ -32,6 +32,7 @@ export default function Home() {
   function handlePagination(page) {
     setCurrentPage(Number(page));
     navigate(`/${page}`);
+    window.scrollTo({ top: 0 });
   }
 
   return (
