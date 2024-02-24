@@ -7,7 +7,7 @@ import Countries from "../components/Countries";
 import { CustomizedPagination } from "../components/Pagination.style";
 
 export default function Home() {
-  const { fetchCountries, allCountries, currentPage, setCurrentPage } =
+  const { fetchCountries, allCountries, currentPage, setCurrentPage, loading } =
     useContext(RestCountriesContext);
   const { page } = useParams();
 
@@ -43,7 +43,7 @@ export default function Home() {
         setShowPagination={setShowPagination}
       />
       <Countries currentCountries={currentItems} />
-      {showPagination && (
+      {showPagination && !loading && (
         <CustomizedPagination
           count={10}
           shape="rounded"
