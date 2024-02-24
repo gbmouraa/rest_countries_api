@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const CountriesContainer = styled.section`
   width: 100%;
-  margin-top: 4rem;
+  margin: 4rem 0;
   display: flex;
   justify-content: center;
   padding: 0 2rem;
