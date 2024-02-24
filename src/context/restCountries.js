@@ -11,6 +11,7 @@ export function RestCountriesProvider({ children }) {
   const [allCountries, setAllCountries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
   async function fetchCountries(query) {
     try {
@@ -44,6 +45,8 @@ export function RestCountriesProvider({ children }) {
         fetchCountries,
         error,
         filterByRegion,
+        currentPage,
+        setCurrentPage,
       }}
     >
       {children}
