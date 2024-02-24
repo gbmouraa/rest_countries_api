@@ -7,8 +7,14 @@ import Countries from "../components/Countries";
 import { CustomizedPagination } from "../components/Pagination.style";
 
 export default function Home() {
-  const { fetchCountries, allCountries, currentPage, setCurrentPage, loading } =
-    useContext(RestCountriesContext);
+  const {
+    fetchCountries,
+    allCountries,
+    currentPage,
+    setCurrentPage,
+    loading,
+    regionFilter,
+  } = useContext(RestCountriesContext);
   const { page } = useParams();
 
   const navigate = useNavigate();
@@ -18,12 +24,17 @@ export default function Home() {
 
   useEffect(() => {
     function loadPage() {
-      fetchCountries("all");
+      if (regionFilter !== "All") {
+        fetchCountries(`region/${regionFilter}`);
+      } else {
+        fetchCountries("all");
+      }
+
       if (page) setCurrentPage(Number(page));
     }
 
     loadPage();
-  }, []);
+  }, [regionFilter]);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
