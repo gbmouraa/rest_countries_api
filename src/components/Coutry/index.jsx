@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { RestCountriesContext } from "../../context/restCountries";
 import Header from "../Header";
 import {
   Container,
@@ -14,13 +16,15 @@ import { Title } from "../Title.style";
 import { FaArrowLeftLong } from "react-icons/fa6";
 
 export default function Coutry({ data }) {
+  const { currentPage } = useContext(RestCountriesContext);
+
   const navigate = useNavigate();
 
   return (
     <>
       <Header />
       <Container>
-        <Button onClick={() => navigate("/")}>
+        <Button onClick={() => navigate(`/${currentPage}`)}>
           <FaArrowLeftLong /> Back
         </Button>
         <CoutryWrapper>
