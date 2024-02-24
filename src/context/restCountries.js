@@ -9,6 +9,7 @@ export function RestCountriesProvider({ children }) {
   });
 
   const [allCountries, setAllCountries] = useState([]);
+  const [regionFilter, setRegionFilter] = useState("All");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,15 +27,6 @@ export function RestCountriesProvider({ children }) {
     }
   }
 
-  async function filterByRegion(region) {
-    if (region === "All") {
-      await fetchCountries("all");
-      return;
-    }
-
-    await fetchCountries(`region/${region}`);
-  }
-
   return (
     <RestCountriesContext.Provider
       value={{
@@ -44,9 +36,10 @@ export function RestCountriesProvider({ children }) {
         loading,
         fetchCountries,
         error,
-        filterByRegion,
         currentPage,
         setCurrentPage,
+        regionFilter,
+        setRegionFilter,
       }}
     >
       {children}
