@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { RestCountriesContext } from "../../context/restCountries";
 import {
   InputGroupWrapper,
@@ -12,8 +13,11 @@ import {
 } from "./InputGroup.style";
 import { IoMdSearch, IoIosArrowDown } from "react-icons/io";
 
-function InputGroup() {
-  const { fetchCountries, filterByRegion } = useContext(RestCountriesContext);
+function InputGroup({ setShowPagination }) {
+  const { fetchCountries, filterByRegion, setCurrentPage, currentPage } =
+    useContext(RestCountriesContext);
+
+  const navigate = useNavigate();
 
   const [menuActive, setMenuActive] = useState("");
   const [regionFilter, setRegionFilter] = useState("");
@@ -26,15 +30,21 @@ function InputGroup() {
   function handleSearch(query) {
     if (query.trim() === "") {
       fetchCountries("all");
+      setShowPagination(true);
+      navigate(`/${currentPage}`);
       return;
     }
 
     fetchCountries(`name/${query}`);
+    setShowPagination(false);
+    setCurrentPage(1);
   }
 
   function handleFilter(filter) {
+    setCurrentPage(1);
     setRegionFilter(filter);
     filterByRegion(filter);
+    navigate(`/1`);
   }
 
   return (
