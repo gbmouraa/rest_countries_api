@@ -14,13 +14,17 @@ import {
 import { IoMdSearch, IoIosArrowDown } from "react-icons/io";
 
 function InputGroup({ setShowPagination }) {
-  const { fetchCountries, filterByRegion, setCurrentPage, currentPage } =
-    useContext(RestCountriesContext);
+  const {
+    fetchCountries,
+    setCurrentPage,
+    currentPage,
+    regionFilter,
+    setRegionFilter,
+  } = useContext(RestCountriesContext);
 
   const navigate = useNavigate();
 
   const [menuActive, setMenuActive] = useState("");
-  const [regionFilter, setRegionFilter] = useState("");
   const regionsList = ["All", "Africa", "America", "Asia", "Europe", "Oceania"];
 
   function handleDropDownMenu(menuID) {
@@ -43,7 +47,6 @@ function InputGroup({ setShowPagination }) {
   function handleFilter(filter) {
     setCurrentPage(1);
     setRegionFilter(filter);
-    filterByRegion(filter);
     navigate(`/1`);
   }
 
@@ -69,9 +72,7 @@ function InputGroup({ setShowPagination }) {
           onClick={(e) => handleDropDownMenu(e.currentTarget.id)}
         >
           <Label>
-            {regionFilter === "All" || regionFilter === ""
-              ? "Filter by Region"
-              : regionFilter}
+            {regionFilter === "All" ? "Filter by Region" : regionFilter}
             <IoIosArrowDown />
           </Label>
           <FiltersList>
