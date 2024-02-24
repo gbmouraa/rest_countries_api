@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Frontend Mentor - REST Countries API with color theme switcher solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Esta é uma solução para o desafio [REST Countries API with color theme switcher challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca).
 
-## Available Scripts
+### O desafio 💻 🚀
 
-In the project directory, you can run:
+Os usuários devem ser capazes de:
 
-### `npm start`
+- Visualizar todos os países da API.
+- Buscar por algum país através de um input.
+- Filtrar países por região.
+- Ao clicar em algum país, ser redirecionado a uma página que mostre os detalhes deste país.
+- Ser capaz de navegar entre países que fazem fronteira com o país selecionado(se houver).
+- Alternar entre temas escuro e claro.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Screenshot 📷
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![](/public/screenshot.png)
 
-### `npm test`
+### Links
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Repositório**: [https://github.com/gbmouraa/rest_countries_api](https://github.com/gbmouraa/rest_countries_api)
+- **Live Site**: [https://devmoura-restcountries.netlify.app/](https://devmoura-restcountries.netlify.app/)
 
-### `npm run build`
+### Projeto construído com 🔨
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Javascript**
+- [**React**](https://reactjs.org/) - Lib Javascript
+- [**Styled Components**](https://styled-components.com/) - para os estilos
+- [**Axios**](https://axios-http.com/) - para fazer as requisições
+- [**Material UI**](https://mui.com/) - para o componente de paginação
+- **React Router** - para navegação entre páginas
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### O que eu aprendi
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Este foi um ótimo projeto para eu aprender a lidar melhor com uma quantidade relativamente grande de dados fornecidos por uma API.
 
-### `npm run eject`
+## Autor
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Website - [Gabriel Moura](https://gmouradev.netlify.app/)
+- Frontend Mentor - [@gbmouraa](https://www.frontendmentor.io/profile/gbmouraa)
+- Linkedin - [Gabriel Moura](https://www.linkedin.com/in/gabriel-moura-b63382161/)
