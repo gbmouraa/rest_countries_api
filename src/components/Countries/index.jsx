@@ -13,8 +13,8 @@ import { Loader } from "../Loader.style";
 
 import { Title } from "../Title.style";
 
-function Countries() {
-  const { allCountries, loading, error } = useContext(RestCountriesContext);
+function Countries({ currentCountries }) {
+  const { loading, error } = useContext(RestCountriesContext);
 
   if (loading) {
     return <Loader />;
@@ -31,10 +31,10 @@ function Countries() {
   return (
     <CountriesContainer>
       <CountriesWrapper>
-        {allCountries.map((item, idx) => (
+        {currentCountries.map((item, idx) => (
           <Country
             key={idx}
-            to={`coutry/${encodeURIComponent(item.name.common)}`}
+            to={`/coutry/${encodeURIComponent(item.name.common)}`}
           >
             <CountryFlag>
               <img src={item.flags.svg} alt={item.flags.alt} />
