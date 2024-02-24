@@ -4,7 +4,7 @@ import { RestCountriesContext } from "../context/restCountries";
 import Header from "../components/Header";
 import InputGroup from "../components/InputGroup";
 import Countries from "../components/Countries";
-import { Pagination } from "@mui/material";
+import { CustomizedPagination } from "../components/Pagination.style";
 
 export default function Home() {
   const { fetchCountries, allCountries, currentPage, setCurrentPage } =
@@ -13,8 +13,7 @@ export default function Home() {
 
   const navigate = useNavigate();
 
-  // const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 4;
+  const itemsPerPage = 20;
   const [showPagination, setShowPagination] = useState(true);
 
   useEffect(() => {
@@ -44,12 +43,13 @@ export default function Home() {
       />
       <Countries currentCountries={currentItems} />
       {showPagination && (
-        <Pagination
+        <CustomizedPagination
           count={10}
           shape="rounded"
           size="large"
           style={{ paddingBottom: "40px" }}
           page={currentPage}
+          variant="outlined"
           onChange={(event, value) => handlePagination(value)}
         />
       )}
