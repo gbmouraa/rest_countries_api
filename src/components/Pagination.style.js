@@ -7,6 +7,16 @@ export const CustomizedPagination = styled(Pagination)`
     color: ${({ theme }) => theme.text};
     font-size: 1.6rem;
     border-color: ${({ theme }) => theme.border_pagination};
+    max-width: 2rem;
+    height: 3rem;
+    font-size: 1.4rem;
+    min-width: 3rem;
+
+    @media screen and (min-width: 467px) {
+      height: 4rem;
+      font-size: 1.6rem;
+      min-width: 4rem;
+    }
   }
 
   ul li button.Mui-selected {
