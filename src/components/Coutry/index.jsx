@@ -24,7 +24,10 @@ export default function Coutry({ data }) {
     <>
       <Header />
       <Container>
-        <Button onClick={() => navigate(`/${currentPage}`)}>
+        <Button
+          onClick={() => navigate(`/${currentPage}`)}
+          className="default-shadow"
+        >
           <FaArrowLeftLong /> Back
         </Button>
         <CoutryWrapper>
@@ -70,7 +73,7 @@ export default function Coutry({ data }) {
                   {data.borders.map((item) => (
                     <Button
                       key={item}
-                      className="border-labels"
+                      className="border-labels default-shadow"
                       onClick={() =>
                         navigate(`/coutry/${encodeURIComponent(item)}`)
                       }

@@ -35,6 +35,7 @@ function Countries({ currentCountries }) {
           <Country
             key={idx}
             to={`/coutry/${encodeURIComponent(item.name.common)}`}
+            className="default-shadow"
           >
             <CountryFlag>
               <img src={item.flags.svg} alt={item.flags.alt} />

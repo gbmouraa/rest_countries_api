@@ -24,7 +24,6 @@ export const Button = styled.button`
   padding: 0.8rem 3.2rem;
   font-size: 1.6rem;
   border-radius: 0.4rem;
-  box-shadow: 0px 2px 4px ${({ theme }) => theme.element_shadow};
   transition: all 0.5s ease;
 
   &:hover {

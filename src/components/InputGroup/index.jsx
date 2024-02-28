@@ -54,7 +54,7 @@ function InputGroup({ setShowPagination }) {
     <Container>
       <InputGroupWrapper>
         <div className="search-area">
-          <SearchBar htmlFor="search">
+          <SearchBar htmlFor="search" className="default-shadow">
             <IoMdSearch size={24} />
             <InputSearch
               onChange={(e) => handleSearch(e.target.value)}
@@ -71,11 +71,11 @@ function InputGroup({ setShowPagination }) {
           height="27.6rem"
           onClick={(e) => handleDropDownMenu(e.currentTarget.id)}
         >
-          <Label>
+          <Label className="default-shadow">
             {regionFilter === "All" ? "Filter by Region" : regionFilter}
             <IoIosArrowDown />
           </Label>
-          <FiltersList>
+          <FiltersList className="default-shadow">
             {regionsList.map((item, idx) => (
               <Filter
                 key={idx}

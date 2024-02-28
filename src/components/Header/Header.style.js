@@ -6,7 +6,6 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: center;
   padding: 2.6rem 2rem;
-  box-shadow: 0px 2px 4px ${({ theme }) => theme.element_shadow};
 `;
 
 export const HeaderWrapper = styled.div`

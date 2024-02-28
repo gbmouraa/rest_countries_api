@@ -28,7 +28,6 @@ export const SearchBar = styled.label`
   padding: 1.6rem 2rem 1.6rem 2.6rem;
   width: 100%;
   background-color: ${({ theme }) => theme.element_bg};
-  box-shadow: 0px 2px 4px ${({ theme }) => theme.element_shadow};
   border-radius: 0.4rem;
   cursor: pointer;
 
@@ -76,7 +75,6 @@ export const Label = styled.p`
   border-radius: 0.4rem;
   padding: 1.2rem 2.2rem;
   width: 20rem;
-  box-shadow: 0px 2px 4px ${({ theme }) => theme.element_shadow};
   font-weight: 600;
   cursor: pointer;
 
@@ -90,7 +88,6 @@ export const FiltersList = styled.ul`
   background-color: ${({ theme }) => theme.element_bg};
   margin-top: 0.8rem;
   border-radius: 0.4rem;
-  box-shadow: 0px 2px 4px ${({ theme }) => theme.element_shadow};
   overflow: hidden;
   height: 0rem;
   transition: all 0.3s ease;

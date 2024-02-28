@@ -33,6 +33,10 @@ export default createGlobalStyle`
     transition: all .7s ease;
   }
 
+  .default-shadow{
+    box-shadow: 0px 2px 4px ${({ theme }) => theme.element_shadow};
+  }
+
   .App{
     width: 100%;
     display: flex;

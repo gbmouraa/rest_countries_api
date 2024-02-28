@@ -25,7 +25,7 @@ export default function Header() {
   }
 
   return (
-    <HeaderContainer>
+    <HeaderContainer className="default-shadow">
       <HeaderWrapper>
         <Title
           size="2"

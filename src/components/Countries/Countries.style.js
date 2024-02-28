@@ -26,7 +26,6 @@ export const Country = styled(Link)`
   border-radius: 0.5rem;
   overflow: hidden;
   background-color: ${({ theme }) => theme.element_bg};
-  box-shadow: 0px 2px 4px ${({ theme }) => theme.element_shadow};
   text-decoration: none;
   color: ${({ theme }) => theme.text};
 
