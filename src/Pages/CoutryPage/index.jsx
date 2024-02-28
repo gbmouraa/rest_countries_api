@@ -15,8 +15,8 @@ export default function CoutryInfo() {
   async function fetchCountry() {
     setLoading(true);
     try {
-      const fetchData = await api.get(`name/${coutryName}`);
-      const data = fetchData.data[0];
+      const fetch = await api.get(`name/${coutryName}`);
+      const data = fetch.data[0];
       data.borders
         ? await loadCountry(data, data.borders)
         : await loadCountry(data);
